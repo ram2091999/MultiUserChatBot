@@ -1,0 +1,17 @@
+{
+  "name": "multiuserchatbot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "huh": "^2.0.1",
+    "node-nlp": "^4.0.0-rc.4",
+    "socket.io": "^2.3.0"
+  }
+}
