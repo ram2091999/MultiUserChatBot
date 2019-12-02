@@ -18,23 +18,21 @@ function setUser(){
 }
 document.getElementById("messageBtn").addEventListener("click", function(){
   let value=document.getElementById("message").value;
-  socket.emit("user",user);
   socket.emit("chat message",value);
   document.getElementById("message").value="";
+  let str=`<div class=" list-group-item">
+    <div class="">
+      <h5 class="mb-1">${user}</h5>
+      <small class="text-muted"></small>
+      <p class="mb-1">${value}</p>
+    </div>
+
+  </div>`;
+    document.getElementById("chat").insertAdjacentHTML( 'beforeend', str );
 });
 socket.on('chat message', function(msg){
-    if(msg.role!="bot"){
-    let str=`<div class=" list-group-item">
-      <div class="">
-        <h5 class="mb-1">${msg.user}</h5>
-        <small class="text-muted"></small>
-        <p class="mb-1">${msg.msg}</p>
-      </div>
+    if(msg.role=="bot"){
 
-    </div>`;
-      document.getElementById("chat").insertAdjacentHTML( 'beforeend', str );
-
-    }else{
       let str=`<div class=" list-group-item">
         <div class="">
           <h5 class="mb-1">Bot</h5>

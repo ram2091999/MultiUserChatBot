@@ -44,16 +44,16 @@ io.on('connection', function(socket){
   });
   socket.on('chat message', function(msg){
    io.emit('chat message', {msg:msg,role:"user",user:user});
-  botResponse(msg);
+  botResponse(msg,socket);
  });
  socket.on('user',function(msg){
    user=msg;
  });
 });
 
-async function botResponse(msg){
+async function botResponse(msg,socket){
   let response=await manager.process('en', msg);
-  io.emit('chat message',{msg:response.answer,role:"bot"});
+  socket.emit('chat message',{msg:response.answer,role:"bot"});
 }
 
 
